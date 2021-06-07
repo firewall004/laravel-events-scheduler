@@ -24,13 +24,15 @@ class AuthController extends Controller
 		// 1. Add try-catch
 		// 2. Add validation in validation class
 		$request->validate([
-			'name' => 'required',
+			'firstName' => 'required',
+			'lastName' => 'required',
 			'email' => 'required|email|unique:admins',
 			'password' => 'required|min:5|max:12'
 		]);
 
 		$admin = new Admin();
-		$admin->name = $request->name;
+		$admin->first_name = $request->firstName;
+		$admin->last_name = $request->lastName;
 		$admin->email = $request->email;
 		$admin->password = Hash::make($request->password);
 
@@ -39,7 +41,7 @@ class AuthController extends Controller
 		if (!$save) {
 			return back()->with('fail', 'Something went wrong.');
 		}
-		return back()->with('success', 'User successfully registered.');
+		return redirect('home');
 	}
 
 	public function check(Request $request)
@@ -56,14 +58,14 @@ class AuthController extends Controller
 		}
 		if (Hash::check($request->password, $userInfo->password)) {
 			$request->session()->put('loggedUser', $userInfo->id);
-			return redirect('dashboard');
+			return redirect('home');
 		}
 		return back()->with('fail', 'Incorrect password');
 	}
 
-	public function dashboard()
+	public function home()
 	{
-		return view('dashboard');
+		return view('home');
 	}
 
 	public function logout()

@@ -24,8 +24,13 @@
 
 					@csrf
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" name="name" placeholder="Enter full name" value="{{ old('email') }}">
+						<label>First Name</label>
+						<input type="text" class="form-control" name="firstName" placeholder="Enter first name" value="{{ old('firstName') }}">
+						<span class="text-danger">@error('firstName'){{ $message }} @enderror</span>
+					</div>
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" class="form-control" name="lastName" placeholder="Enter last name" value="{{ old('lastName') }}">
 						<span class="text-danger">@error('name'){{ $message }} @enderror</span>
 					</div>
 					<div class="form-group">
