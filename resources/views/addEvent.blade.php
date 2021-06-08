@@ -38,8 +38,8 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">Start Time</label>
-						<div class='input-group date' id='datetimepicker1'>
-							<input type='text' class="form-control" name="startTime" />
+						<div class='input-group time' id='datetimepicker1'>
+							<input type='text' class="timepicker  form-control" name="startTime" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -47,8 +47,8 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">End Time</label>
-						<div class='input-group date' id='datetimepicker2'>
-							<input type='text' class="form-control" name="endTime" />
+						<div class='input-group time' id='datetimepicker2'>
+							<input type='text' class="timepicker  form-control" name="endTime" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -83,8 +83,12 @@
 	$(function() {
 		$(document).ready(function() {
 			$('select').selectpicker();
-			$('#datetimepicker1').datetimepicker();
-			$('#datetimepicker2').datetimepicker();
+			$('#datetimepicker1').datetimepicker({
+				format: 'HH:mm:ss'
+			});
+			$('#datetimepicker2').datetimepicker({
+				format: 'HH:mm:ss'
+			});
 		});
 	});
 </script>

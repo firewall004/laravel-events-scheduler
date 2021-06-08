@@ -35,8 +35,8 @@ class EventController extends Controller
 		$event = new Event();
 		$event->name = $request->name;
 		$event->description = $request->description;
-		$event->start_time = date('Y-m-d H:i:s', strtotime($request->startTime));
-		$event->end_time = date('Y-m-d H:i:s', strtotime($request->endTime));
+		$event->start_time = date('H:i:s', strtotime($request->startTime));
+		$event->end_time = date('H:i:s', strtotime($request->endTime));
 		$event->days = implode(', ', $request->days);
 
 		$save = $event->save();
