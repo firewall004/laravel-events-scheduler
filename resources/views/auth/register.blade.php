@@ -40,7 +40,7 @@
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<input type="text" class="form-control" name="password" placeholder="Enter password" value="{{ old('email') }}">
+						<input type="password" class="form-control" name="password" placeholder="Enter password" value="{{ old('email') }}">
 						<span class="text-danger">@error('password'){{ $message }} @enderror</span>
 					</div>
 					<button type="submit" class="btn btn-block btn-primary">Sign Up</button>

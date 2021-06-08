@@ -41,6 +41,8 @@ class AuthController extends Controller
 		if (!$save) {
 			return back()->with('fail', 'Something went wrong.');
 		}
+
+		$request->session()->put('loggedUser', $admin->id);
 		return redirect('home');
 	}
 
