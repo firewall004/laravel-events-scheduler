@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventCreated;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,8 @@ class EventController extends Controller
 		if (!$save) {
 			return back()->with('fail', 'Something went wrong.');
 		}
+
+		event(new EventCreated($event));
 		return redirect('home');
 	}
 }
