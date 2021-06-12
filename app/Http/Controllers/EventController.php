@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\EventCreated;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -54,5 +55,21 @@ class EventController extends Controller
         } catch (Throwable $th) {
             throw $th;
         }
+    }
+
+    public function eventSchedules(): Response
+    {
+        $events = Event::all();
+        $allEvents = [];
+
+        $count = 0;
+
+        foreach ($events as $event) {
+            $allEvents[$count]['event'] = $event;
+            $allEvents[$count]['schedules'] = $event->schedules;
+
+            ++$count;
+        }
+        return response(['data' => $allEvents]);
     }
 }

@@ -16,6 +16,8 @@ class Event extends Model
      */
     public function schedules()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(Schedule::class, 'event_id', 'id');
     }
+
+    // TODO: Hide timestamp and other non useful props
 }
