@@ -23,18 +23,16 @@ Thus, on successful submission of form write a code that also create schedules o
 
 ## Additional libraries used
 
-### Calendar
-[vue-fullcalendar](https://openbase.com/js/vue-fullcalendar)
+- [vue-fullcalendar](https://openbase.com/js/vue-fullcalendar)
 
 This is used to get the calendar view with the events.
 
-### Phan
-[phan](https://packagist.org/packages/phan/phan)
+- [phan](https://packagist.org/packages/phan/phan)
 
 This is a static analyzer for PHP.
 
-### PHPCS
-[php_codesniffer](https://packagist.org/packages/squizlabs/php_codesniffer)
+- [php_codesniffer](https://packagist.org/packages/squizlabs/php_codesniffer)
+
 PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.
 
 ---
