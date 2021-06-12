@@ -10,28 +10,28 @@ use Illuminate\Queue\SerializesModels;
 
 class EventCreated
 {
-	use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
 
-	public $event;
+    public $event;
 
-	/**
-	 * Create a new event instance.
-	 *
-	 * @return void
-	 */
-	public function __construct(Event $event)
-	{
-		$this->event = $event;
-	}
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct(Event $event)
+    {
+        $this->event = $event;
+    }
 
 
-	/**
-	 * Get the channels the event should broadcast on.
-	 *
-	 * @return \Illuminate\Broadcasting\Channel|array
-	 */
-	public function broadcastOn()
-	{
-		return new PrivateChannel('channel-name');
-	}
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
 }

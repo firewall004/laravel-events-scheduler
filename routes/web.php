@@ -11,12 +11,12 @@ Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout
 Route::get('/events', [EventController::class, 'index'])->name('events.show');
 
 Route::group(['middleware' => ['authCheck']], function () {
-	Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login');
-	Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
-	Route::get('/home', [AuthController::class, 'home']);
-	Route::get('/', [AuthController::class, 'home']);
+    Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::get('/home', [AuthController::class, 'home']);
+    Route::get('/', [AuthController::class, 'home']);
 
-	// TODO: Add prefix
-	Route::get('/event', [EventController::class, 'addEvent'])->name('event.add');
-	Route::post('/event/save', [EventController::class, 'save'])->name('event.save');
+    // TODO: Add prefix
+    Route::get('/event', [EventController::class, 'addEvent'])->name('event.add');
+    Route::post('/event/save', [EventController::class, 'save'])->name('event.save');
 });

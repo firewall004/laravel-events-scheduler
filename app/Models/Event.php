@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-	use HasFactory;
+    use HasFactory;
 
-	protected $table = 'events';
+    protected $table = 'events';
 
-	/**
-	 * Get the schedules for the event.
-	 */
-	public function schedules()
-	{
-		return $this->hasMany(Schedule::class);
-	}
+    /**
+     * Get the schedules for the event.
+     */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
