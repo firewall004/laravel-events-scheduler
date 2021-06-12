@@ -21,12 +21,12 @@
 	<link id="favicon" type="image/x-icon" rel="icon" href="https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_12.ico">
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
 	<span class="navbar-brand">Schedule Events</span>
 	<span class="navbar-brand"> | </span>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
+		<ul class="nav navbar-nav mr-auto">
 			<li class="nav-item active">
 				<a class="nav-link" href="{{ route('home') }}">Home</a>
 			</li>
@@ -35,7 +35,7 @@
 			</li>
 		</ul>
 		<!-- TODO: To show this only when current page is not login or register page -->
-		<ul class="navbar-nav my-2 my-lg-0">
+		<ul class="nav navbar-nav navbar-right">
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('auth.logout') }}">Logout</a>
 			</li>

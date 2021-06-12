@@ -23,6 +23,7 @@
                        this.scheduledEvents = response.data;
                      });
             },
+			
         },
 		computed: {
 			userAllEvents() {
