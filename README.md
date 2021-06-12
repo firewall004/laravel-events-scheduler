@@ -44,6 +44,7 @@ PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations o
 1. clone the repo - `git clone git@github.com:firewall004/laravel-events-scheduler.git`
 2. migrate the database migration - `php artisan migrate`
 3. Build and compile vue / js / css - `npm run development`
+4. Serve the project - `php artisan serve`
 
 That's all :smiley:
 
