@@ -10,4 +10,12 @@ class Event extends Model
 	use HasFactory;
 
 	protected $table = 'events';
+
+	/**
+	 * Get the schedules for the event.
+	 */
+	public function schedules()
+	{
+		return $this->hasMany(Schedule::class);
+	}
 }
