@@ -11,7 +11,7 @@ Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout
 Route::group(['middleware' => ['authCheck']], function () {
     Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
-    Route::get('/home', [AuthController::class, 'home']);
+    Route::get('/home', [AuthController::class, 'home'])->name('home');
     Route::get('/', [AuthController::class, 'home']);
 
     Route::get('/events', [EventController::class, 'index'])->name('events.show');
