@@ -49,6 +49,7 @@ class EventController extends Controller
             DB::commit();
             return $this->index();
         } catch (Throwable $th) {
+            DB::rollBack();
             throw $th;
         }
     }
