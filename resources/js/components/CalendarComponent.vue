@@ -26,7 +26,7 @@
 		},
 		methods: {
             async loadCalendarSchedules() {
-                await axios.get('/api/events/user/2/schedules')
+                await axios.get('/api/events/user/' + this.userId + '/schedules')
                      .then((response) => {
                        this.scheduledEvents = response.data;
                      });

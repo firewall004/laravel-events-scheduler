@@ -1916,7 +1916,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/events/user/2/schedules').then(function (response) {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/events/user/' + _this2.userId + '/schedules').then(function (response) {
                   _this2.scheduledEvents = response.data;
                 });
 
