@@ -35,7 +35,7 @@
 			</li>
 		</ul>
 		<!-- TODO: To show this only when current page is not login or register page -->
-		<ul class="nav navbar-nav navbar-right">
+		<ul class="nav navbar-nav navbar-right pr-4">
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('auth.logout') }}">Logout</a>
 			</li>
