@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class AuthController extends Controller
 {
@@ -20,30 +22,34 @@ class AuthController extends Controller
 
     public function save(Request $request)
     {
-        // TODOS:
-        // 1. Add try-catch
-        // 2. Add validation in validation class
-        $request->validate([
+        try {
+            $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required|email|unique:admins',
             'password' => 'required|min:5|max:12'
-        ]);
+            ]);
 
-        $admin = new Admin();
-        $admin->first_name = $request->firstName;
-        $admin->last_name = $request->lastName;
-        $admin->email = $request->email;
-        $admin->password = Hash::make($request->password);
+            $admin = new Admin();
+            $admin->first_name = $request->firstName;
+            $admin->last_name = $request->lastName;
+            $admin->email = $request->email;
+            $admin->password = Hash::make($request->password);
 
-        $save = $admin->save();
+            DB::beginTransaction();
+            $save = $admin->save();
 
-        if (!$save) {
-            return back()->with('fail', 'Something went wrong.');
+            if (!$save) {
+                DB::rollBack();
+                return back()->with('fail', 'Something went wrong.');
+            }
+            DB::commit();
+
+            $request->session()->put('loggedUser', $admin->id);
+            return redirect('home');
+        } catch (Throwable $th) {
+            throw $th;
         }
-
-        $request->session()->put('loggedUser', $admin->id);
-        return redirect('home');
     }
 
     public function check(Request $request)

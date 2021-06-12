@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Events\EventCreated;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class EventController extends Controller
 {
@@ -23,30 +25,34 @@ class EventController extends Controller
 
     public function save(Request $request)
     {
-        // TODOS:
-        // 1. Add try-catch
-        // 2. Add validation in validation class
-        $request->validate([
+        try {
+            $request->validate([
             'name' => 'required',
             'description' => 'required',
             'startTime' => 'required',
             'endTime' => 'required'
-        ]);
+            ]);
 
-        $event = new Event();
-        $event->name = $request->name;
-        $event->description = $request->description;
-        $event->start_time = date('H:i:s', strtotime($request->startTime));
-        $event->end_time = date('H:i:s', strtotime($request->endTime));
-        $event->days = implode(', ', $request->days);
+            $event = new Event();
+            $event->name = $request->name;
+            $event->description = $request->description;
+            $event->start_time = date('H:i:s', strtotime($request->startTime));
+            $event->end_time = date('H:i:s', strtotime($request->endTime));
+            $event->days = implode(', ', $request->days);
 
-        $save = $event->save();
+            DB::beginTransaction();
+            $save = $event->save();
 
-        if (!$save) {
-            return back()->with('fail', 'Something went wrong.');
+            if (!$save) {
+                DB::rollBack();
+                return back()->with('fail', 'Something went wrong.');
+            }
+
+            event(new EventCreated($event));
+            DB::commit();
+            return $this->index();
+        } catch (Throwable $th) {
+            throw $th;
         }
-
-        event(new EventCreated($event));
-		return $this->index();
     }
 }
