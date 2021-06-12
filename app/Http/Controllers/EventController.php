@@ -47,6 +47,6 @@ class EventController extends Controller
         }
 
         event(new EventCreated($event));
-        return redirect('home');
+		return $this->index();
     }
 }
