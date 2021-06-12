@@ -73,7 +73,9 @@ class AuthController extends Controller
 
     public function home()
     {
-        return view('home');
+        return view('home', [
+            'userId' => session()->get('loggedUser')
+        ]);
     }
 
     public function logout()

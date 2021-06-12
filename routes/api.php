@@ -7,4 +7,4 @@ use App\Http\Controllers\EventController;
 //     Route::get('/events/schedules', [EventController::class, 'eventSchedules']);
 // });
 
-Route::get('/events/schedules', [EventController::class, 'eventSchedules']);
+Route::get('/events/user/{userId}/schedules', [EventController::class, 'eventSchedules']);
