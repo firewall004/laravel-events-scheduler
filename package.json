@@ -28,7 +28,6 @@
         "babel-preset-stage-2": "^6.24.1",
         "babel-runtime": "^6.26.0",
         "moment": "^2.29.1",
-        "vue-full-calendar": "^2.8.1-0",
         "vue-fullcalendar": "^1.0.9"
     }
 }
