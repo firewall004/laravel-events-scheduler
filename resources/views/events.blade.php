@@ -13,14 +13,14 @@
 			</div>
 			<div class="w-100 d-block d-md-table">
 				<div>
-					<table class="table table-light table-hover table-bordered table-lg align-middle">
+					<table class="table table-light table-hover table-bordered">
 						<thead>
 							<tr class="table-dark">
 								<th scope="col">Name</th>
 								<th scope="col">Description</th>
 								<th scope="col">Start Time</th>
 								<th scope="col">End Time</th>
-								<th scope="col">Days</th>
+								<th scope="col">Day(s)</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,7 +34,7 @@
 							</tr>
 							@empty
 							<tr class="table-warning">
-								<td colspan="3"> No record found </td>
+								<td colspan="5"> No record found </td>
 							</tr>
 							@endforelse
 						</tbody>

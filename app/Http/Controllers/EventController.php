@@ -56,17 +56,8 @@ class EventController extends Controller
 
     public function eventSchedules(int $userId): Response
     {
-        $events = Event::where('created_by', $userId)->get();
-        $allEvents = [];
-
-        $count = 0;
-
-        foreach ($events as $event) {
-            $allEvents[$count]['event'] = $event;
-            $allEvents[$count]['schedules'] = $event->schedules;
-
-            ++$count;
-        }
-        return response(['data' => $allEvents]);
+        return response(
+            ['data' => Event::with('schedules')->where('created_by', $userId)->get()]
+        );
     }
 }
