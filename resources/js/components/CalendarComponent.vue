@@ -13,17 +13,25 @@
 				scheduledEvents: []
 			}
 		},
+		props: {
+			userId: {
+				type: String,
+				default: function() {
+					return window.userId;
+				},
+			},
+		},
 		async mounted() {
 			await this.loadCalendarSchedules()
 		},
 		methods: {
             async loadCalendarSchedules() {
-                await axios.get('/api/events/schedules')
+                await axios.get('/api/events/user/' + this.userId + '/schedules')
                      .then((response) => {
                        this.scheduledEvents = response.data;
                      });
             },
-			
+
         },
 		computed: {
 			userAllEvents() {

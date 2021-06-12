@@ -2,6 +2,9 @@
 
 <head>
 	<script src="{{ asset('js/app.js') }}" defer></script>
+	<script>
+		window.userId = "{{ $userId }}"
+	</script>
 </head>
 
 <body>
@@ -15,7 +18,7 @@
 
 		<div id="app">
 			<div class="py-4">
-				<calendar-component></calendar-component>
+				<calendar-component :userId="{{ $userId }}"></calendar-component>
 			</div>
 		</div>
 	</div>

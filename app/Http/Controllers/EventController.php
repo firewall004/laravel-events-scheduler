@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Events\EventCreated;
 use App\Http\Requests\EventStoreRequest;
 use App\Models\Event;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -19,7 +18,7 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::all();
+        $events = Event::where('created_by', session()->get('loggedUser'))->get();
         return view('events', [
             'events' => $events
         ]);
@@ -28,7 +27,7 @@ class EventController extends Controller
     public function save(EventStoreRequest $request)
     {
         try {
-            $eventRequest = $request->validated();
+            $eventRequest = $request;
 
             $event = new Event();
             $event->name = $eventRequest['name'];
@@ -36,6 +35,7 @@ class EventController extends Controller
             $event->start_time = date('H:i:s', strtotime($eventRequest['startTime']));
             $event->end_time = date('H:i:s', strtotime($eventRequest['endTime']));
             $event->days = implode(', ', $eventRequest['days']);
+            $event->created_by = session()->get('loggedUser');
 
             DB::beginTransaction();
             $save = $event->save();
@@ -53,9 +53,9 @@ class EventController extends Controller
         }
     }
 
-    public function eventSchedules(): Response
+    public function eventSchedules(int $userId): Response
     {
-        $events = Event::all();
+        $events = Event::where('created_by', $userId)->get();
         $allEvents = [];
 
         $count = 0;
