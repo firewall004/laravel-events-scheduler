@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
@@ -11,13 +12,10 @@ class Event extends Model
 
     protected $table = 'events';
 
-    /**
-     * Get the schedules for the event.
-     */
-    public function schedules()
+    public function schedules(): HasMany
     {
-        return $this->hasMany(Schedule::class, 'event_id', 'id');
+        return $this->hasMany(Schedule::class);
     }
 
-    // TODO: Hide timestamp and other non useful props
+    protected $hidden = ['created_at', 'updated_at'];
 }

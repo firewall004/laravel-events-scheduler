@@ -6,7 +6,7 @@
 
 <body>
 	<div class="container">
-		<div class="row" style="margin-top:45px">
+		<div class="row" style="margin-top:20px">
 			<div class="col-md-4 col-md-offset-4">
 				<h4>Schedules Calendar</h4>
 				<hr>

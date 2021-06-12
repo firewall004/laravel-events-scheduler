@@ -9,6 +9,7 @@ Route::get('/auth/check', [AuthController::class, 'check'])->name('auth.check');
 Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::group(['middleware' => ['authCheck']], function () {
+
     Route::get('/auth/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/auth/register', [AuthController::class, 'register'])->name('auth.register');
     Route::get('/home', [AuthController::class, 'home'])->name('home');

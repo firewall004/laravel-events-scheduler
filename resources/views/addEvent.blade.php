@@ -4,12 +4,14 @@
 
 	<div class="container">
 		<div class="row" style="margin-top:45px">
-			<div class="col-md-4 col-md-offset-4">
-				<h4>Add event</h4>
-				<div>
-					<a class="btn btn-default" href="{{ route('events.show') }}">All Events</a>
+			<div class="row">
+				<h4 class="float-left">Add event</h4>
+				<div class="float-right pl-4">
+					<a class="btn btn-info" href="{{ route('events.show') }}">All Events</a>
 				</div>
 				<hr>
+			</div>
+			<div class="w-100 d-block row">
 				<form action="{{ route('event.save') }}" method="post">
 
 					<!-- Move this to reusable -->
@@ -33,7 +35,7 @@
 					</div>
 					<div class="form-group">
 						<label>Description</label>
-						<input type="textarea" class="form-control" name="description" placeholder="Enter description" value="{{ old('description') }}">
+						<textarea class="form-control" style="resize:none" name="description" placeholder="Enter description" rows="3" value="{{ old('description') }}" /></textarea>
 						<span class="text-danger">@error('description'){{ $message }} @enderror</span>
 					</div>
 					<div class="form-group">

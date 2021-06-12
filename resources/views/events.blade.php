@@ -4,21 +4,23 @@
 
 	<div class="container">
 		<div class="row" style="margin-top:45px">
-			<div class="col-md-4 col-md-offset-4">
-				<h4>All events</h4>
-				<div>
-					<a class="btn btn-default" href="{{ route('event.add') }}">Add Event</a>
+			<div>
+				<h4 class="float-left">All events</h4>
+				<div class="float-right pl-4">
+					<a class="btn btn-primary btn-sm" href="{{ route('event.add') }}">Add Event</a>
 				</div>
 				<hr>
+			</div>
+			<div class="w-100 d-block d-md-table">
 				<div>
-					<table>
+					<table class="table table-light table-hover table-bordered table-lg align-middle">
 						<thead>
-							<tr>
-								<th> name</th>
-								<th> Description </th>
-								<th> Start Time </th>
-								<th> End Time</th>
-								<th> Days </th>
+							<tr class="table-dark">
+								<th scope="col">Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Start Time</th>
+								<th scope="col">End Time</th>
+								<th scope="col">Days</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,7 +33,7 @@
 								<td>{{$event->days}}</td>
 							</tr>
 							@empty
-							<tr>
+							<tr class="table-warning">
 								<td colspan="3"> No record found </td>
 							</tr>
 							@endforelse

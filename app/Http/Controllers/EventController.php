@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\EventCreated;
+use App\Http\Requests\EventStoreRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -24,22 +25,17 @@ class EventController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function save(EventStoreRequest $request)
     {
         try {
-            $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'startTime' => 'required',
-            'endTime' => 'required'
-            ]);
+            $eventRequest = $request->validated();
 
             $event = new Event();
-            $event->name = $request->name;
-            $event->description = $request->description;
-            $event->start_time = date('H:i:s', strtotime($request->startTime));
-            $event->end_time = date('H:i:s', strtotime($request->endTime));
-            $event->days = implode(', ', $request->days);
+            $event->name = $eventRequest['name'];
+            $event->description = $eventRequest['description'];
+            $event->start_time = date('H:i:s', strtotime($eventRequest['startTime']));
+            $event->end_time = date('H:i:s', strtotime($eventRequest['endTime']));
+            $event->days = implode(', ', $eventRequest['days']);
 
             DB::beginTransaction();
             $save = $event->save();
