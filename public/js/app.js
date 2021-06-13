@@ -1937,10 +1937,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var allScheduledEvents = this.scheduledEvents.data;
       var allEvents = [];
-      allScheduledEvents.forEach(function (eventSchedules) {
-        var event = eventSchedules.event;
-        var schedules = eventSchedules.schedules;
-        schedules.forEach(function (schedule) {
+      allScheduledEvents.forEach(function (event) {
+        var eventSchedules = event.schedules;
+        eventSchedules.forEach(function (schedule) {
           var eachEvent = {
             'title': event.name,
             'start': schedule.scheduled_date,

@@ -18,10 +18,8 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::where('created_by', session()->get('loggedUser'))->get();
-        return view('events', [
-            'events' => $events
-        ]);
+        $events = Event::where('created_by', session()->get('loggedUser'))->paginate(15);
+        return view('events', ['events' => $events]);
     }
 
     public function save(EventStoreRequest $request)
@@ -49,23 +47,15 @@ class EventController extends Controller
             DB::commit();
             return $this->index();
         } catch (Throwable $th) {
+            DB::rollBack();
             throw $th;
         }
     }
 
     public function eventSchedules(int $userId): Response
     {
-        $events = Event::where('created_by', $userId)->get();
-        $allEvents = [];
-
-        $count = 0;
-
-        foreach ($events as $event) {
-            $allEvents[$count]['event'] = $event;
-            $allEvents[$count]['schedules'] = $event->schedules;
-
-            ++$count;
-        }
-        return response(['data' => $allEvents]);
+        return response(
+            ['data' => Event::with('schedules')->where('created_by', $userId)->get()]
+        );
     }
 }

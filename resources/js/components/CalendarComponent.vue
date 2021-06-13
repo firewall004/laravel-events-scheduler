@@ -41,11 +41,10 @@
 				const allScheduledEvents = this.scheduledEvents.data;
 
 				let allEvents = [];
-				allScheduledEvents.forEach(eventSchedules => {
-					let event = eventSchedules.event;
-					let schedules = eventSchedules.schedules;
+				allScheduledEvents.forEach(event => {
+					let eventSchedules = event.schedules;
 
-					schedules.forEach(schedule => {
+					eventSchedules.forEach(schedule => {
 						let eachEvent = {
 							'title': event.name,
 							'start': schedule.scheduled_date,
