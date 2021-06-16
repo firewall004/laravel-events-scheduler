@@ -1,6 +1,4 @@
-# Project Name
-
-**Event Schedulers**
+# Project Name - **Event Schedulers**
 
 An application to create event and view the upcoming schedules for that event.
 If user create an event, the application will create recurring scheduled events for next set of days(default 90). This can be changes in `.env` file.
