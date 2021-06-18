@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row" style="margin-top:45px">
+<div class="row">
 	<div>
 		<h4 class="float-left">All events</h4>
 		<div class="float-right pl-4">

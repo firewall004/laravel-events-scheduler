@@ -43,6 +43,23 @@
 	</div>
 </nav>
 
-<div class="container">
+<div class="container" style="padding-bottom: 120px;">
 	@yield('content')
 </div>
+
+<!-- TODO: Move these css in separate file -->
+
+<footer class="footer navbar-fixed-bottom" style="bottom: 0; background-color: #f5f5f5; width: 100%;">
+	<div class="container-fluid text-center text-md-left">
+		<div class="row">
+			<div class="col-md-6 mt-md-0 mt-3">
+				<h5 class="text-uppercase">Schedule Events</h5>
+				<p>Schedule your events.</p>
+			</div>
+			<hr class="clearfix w-100 d-md-none pb-3">
+		</div>
+	</div>
+	<div class="footer-copyright text-center py-3">© 2021 Copyright:
+		<a href="https://github.com/firewall004">Vivek Kumar</a>
+	</div>
+</footer>
